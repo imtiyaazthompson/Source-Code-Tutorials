@@ -1,0 +1,5 @@
+birth_year = input("Year you were born: ")
+age = 2020 - int(birth_year)
+print("You are ")
+print(age)
+print("years old")
