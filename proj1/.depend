@@ -1,0 +1,4 @@
+main.o: src/main.c src/parser.h src/loader.h src/manager.h
+parser.o: src/parser.c src/parser.h src/syntax.h src/loader.h
+loader.o: src/loader.c src/loader.h src/asm.h src/syntax.h
+manager.o: src/manager.c src/manager.h src/loader.h src/asm.h
