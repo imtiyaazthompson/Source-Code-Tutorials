@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{book}
+
+%Commonly used packages
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{index}
+\makeindex
+
+\begin{document}
+
+\title{\Large{\textbf{LaTeX Tutorial 2}}}
+\author{Imtiyaaz Thompson}
+\date{15-02-2020}
+\maketitle
+
+\tableofcontents
+\pagenumbering{roman}
+\setcounter{page}{2}
+
+%Changing document footers and headers
+%First clear the default
+\fancyhf{}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{2pt}
+\fancyhead[LE]{\leftmark} %Even page headers, on the left
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\fancyfoot[LE,RO]{\thepage} %Just show the page number in the footer
+
+\chapter{Chapter Name}
+
+\blindmathtrue
+\blindtext[5]
+
+\section{A Section}
+
+\section{B Section}
+
+\section{Section C}
+
+\end{document}

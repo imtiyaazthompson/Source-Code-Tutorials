@@ -1,0 +1,28 @@
+\documentclass[a4paper,12pt,landscape,twocolumn]{book}
+
+%Fonts
+\renewcommand{\familydefault}{\sfdefault}
+
+%Custom margins - require package
+\usepackage[a4paper, inner=1.75cm, outer=2.7cm, top=2cm, bottom=2cm, bindingoffset=1.2cm]{geometry}
+
+%Packages - used to import all sorts of functionality
+%Babel package - allows you to define how you want hyphenation to be handled
+\usepackage[english]{babel}
+
+%import filler text using a package
+\usepackage{blindtext}
+
+\begin{document}
+
+\title{\Large{\textbf{LaTeX Tutorial}}}
+\author{By Imtiyaaz Thompson}
+\date{15-02-2020}
+
+%Make the title page
+\maketitle
+
+%Start everything else on the next page
+\blindtext[5]
+
+\end{document}
