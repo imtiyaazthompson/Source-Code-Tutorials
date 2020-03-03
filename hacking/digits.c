@@ -7,6 +7,7 @@ void get_base(char *str);
 void get_number_as_string();
 int get_str_len(char *str);
 int is_valid_base(char *choice);
+int is_valid_number(int base, char* num, int len);
 
 void get_base(char *str) {
 	printf("(D)ecimal, (H)exidecimal, (B)inary: ");
@@ -29,30 +30,76 @@ int get_str_len(char *str) {
 }
 
 int is_valid_base(char *str) {
-	if (strcmp(str,"d") || strcmp(str,"decimal")){
+	if (strcmp(str,"d") == 0 || strcmp(str,"decimal") == 0){
 		return 1;
-	} else if (strcmp(str,"h") || strcmp(str,"hex")) {
+	} else if (strcmp(str,"h") == 0 || strcmp(str,"hex") == 0) {
 		return 2;
-	} else if (strcmp(str,"b") || strcmp(str,"bin")) {
+	} else if (strcmp(str,"b") == 0 || strcmp(str,"bin") == 0) {
 		return 3;
 	} else {
 		return 0;
 	}
 }
 
+int is_valid_number(int base, char* num, int len) {
+	int i;
+	if (base == 1) {
+		for (i = 0; i < len; i++) {
+			if (isdigit(num[i])) {
+				continue;
+			} else {
+				return 0;
+			}
+		}	
+	} else if (base == 2) {
+		for (i = 0; i < len; i++) {
+			char c = num[i];
+			if (isdigit(c) || isalpha(c)) {
+				c = num[i];
+				if (c != 'a' || c != 'b' || c != 'c' ||
+				    c != 'd' || c != 'e' || c != 'f') {
+					return 0;
+				} else {
+					continue;
+				}
+			}
+		}
+	} else {
+		for (i = 0; i < len; i++) {
+			if (isdigit(num[i]) && (num[i] >= 0 && num[i] <= 1)) {
+				continue;
+			} else {
+				return 0;
+			} 
+		}
+	}
+
+	return 1;
+}
+
 int main()
 {
 	char *str = malloc(sizeof(char)*64);
 	char *base = malloc(sizeof(char)*12);
+	int c, len;
 	get_base(base);
-	if (is_valid_base(base)) {
-		printf("Base '%s' is valid\n", base);
-	} else {
-		printf("Base '")
-	}
 	get_number_as_string(str);
-	string_to_lower(base, get_str_len(str));
+	len = get_str_len(str);
+	string_to_lower(base, len);
+	c = is_valid_base(base);
+	if (c) {
+		printf("Base '%s' is valid, with ret: %d\n", base,c);
+	} else {
+		printf("Base '%s' is NOT valid. Terminating", base);
+		return EXIT_FAILURE;
+	}
 	printf("Base: %s\nYou chose: %s\nOf length: %d\n", base, str, get_str_len(str));
+	if (is_valid_number(c, str, len)) {
+		printf("The number: %s is VALID\n", str);
+	} else {
+		printf("The number: %s is INVALID\n", str);
+		return EXIT_FAILURE;
+	}
 
 	free(str);
 	free(base);
