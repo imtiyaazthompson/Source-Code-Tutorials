@@ -54,19 +54,24 @@ int is_valid_number(int base, char* num, int len) {
 	} else if (base == 2) {
 		for (i = 0; i < len; i++) {
 			char c = num[i];
-			if (isdigit(c) || isalpha(c)) {
-				c = num[i];
-				if (c != 'a' || c != 'b' || c != 'c' ||
-				    c != 'd' || c != 'e' || c != 'f') {
+			printf("c is : %c\n", c);
+			if (isalpha(c)) {
+				if (c != 'a' && c != 'b' && c != 'c' &&
+				    c != 'd' && c != 'e' && c != 'f') {
 					return 0;
 				} else {
 					continue;
 				}
+			} else if (isdigit(c)) {
+				continue;
+			} else {
+				return 0;
 			}
 		}
 	} else {
 		for (i = 0; i < len; i++) {
-			if (isdigit(num[i]) && (num[i] >= 0 && num[i] <= 1)) {
+			int c = num[i];
+			if (isdigit(c) && (c >= 0 && c < 2)) {
 				continue;
 			} else {
 				return 0;
@@ -85,7 +90,8 @@ int main()
 	get_base(base);
 	get_number_as_string(str);
 	len = get_str_len(str);
-	string_to_lower(base, len);
+	string_to_lower(base, get_str_len(base));
+	string_to_lower(str, len);
 	c = is_valid_base(base);
 	if (c) {
 		printf("Base '%s' is valid, with ret: %d\n", base,c);
