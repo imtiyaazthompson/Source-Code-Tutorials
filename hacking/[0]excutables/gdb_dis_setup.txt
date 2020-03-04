@@ -1,0 +1,5 @@
+set disassembly intel -> get intel assembly
+
+set logging file [file]
+set logging on
+-> allows gdb output to be appended to a file

@@ -1,0 +1,45 @@
+Execution is stopped just before main
+GP registers: rax, rcx, rdx and rbx -> Act as tmp variables
+for the cpu when it is exec machine instr
+rax - accumalator
+rcx - counter
+rdx - data
+rbx - base
+
+Pointers and Indexes: rsp, rbp, rsi, rdi -> Pointers store 64-bit (in this case) addresses - point to that location in mem
+si and di -> point to source and dest for when thing need to be
+written to and retrieved from
+
+rsp - stack pointer
+rbp - base pointer
+rsi - source index
+rdi - dest index
+
+rip - Instruction Pointer -> points to the current instr the
+processor is reading 
+rip current points to address 0x40052a
+
+rax            0x400526	4195622
+rbx            0x0	0
+rcx            0x0	0
+rdx            0x7fffffffdf18	140737488346904
+rsi            0x7fffffffdf08	140737488346888
+rdi            0x1	1
+rbp            0x7fffffffde20	0x7fffffffde20
+rsp            0x7fffffffde20	0x7fffffffde20
+r8             0x4005b0	4195760
+r9             0x7ffff7de7ac0	140737351940800
+r10            0x846	2118
+r11            0x7ffff7a2d740	140737348032320
+r12            0x400430	4195376
+r13            0x7fffffffdf00	140737488346880
+r14            0x0	0
+r15            0x0	0
+rip            0x40052a	0x40052a <main+4>
+eflags         0x246	[ PF ZF IF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0

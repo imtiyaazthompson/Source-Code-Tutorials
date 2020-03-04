@@ -3,7 +3,7 @@
 COMPILER ?= $(GCC_PATH)gcc
 
 #FLAGS ?= -std=c++0x -O3 -Wall $(GCC_SUPPFLAGS)
-FLAGS ?= -O2 -Wall -Wno-variadic-macros -pedantic -g $(GCC_SUPPFLAGS)
+FLAGS ?= -O2 -DDEBUG -Wall -Wno-variadic-macros -pedantic -g $(GCC_SUPPFLAGS)
 
 LDFLAGS ?= -g 
 LDLIBS = -lm
