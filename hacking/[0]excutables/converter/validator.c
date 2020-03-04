@@ -13,13 +13,13 @@ void string_to_lower(char *str, int len) {
 
 int is_valid_base(char *str) {
         if (strcmp(str,"d") == 0 || strcmp(str,"decimal") == 0){
-                return 1;
+                return DEC;
         } else if (strcmp(str,"h") == 0 || strcmp(str,"hex") == 0) {
-                return 2;
+                return HEX;
         } else if (strcmp(str,"b") == 0 || strcmp(str,"bin") == 0) {
-                return 3;
+                return BIN;
         } else {
-                return 0;
+                return FAIL;
         }
 }
 

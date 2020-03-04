@@ -28,15 +28,12 @@ int main()
                 return EXIT_FAILURE;
         }
 
-	number = str_to_int_array(str, b);
-	for (int i = 0; i < get_iarr_len(number); i++) {
-		printf("%d", number[i]);
-	}
-	printf("\nNumber array Len: %d", get_iarr_len(number));
-	printf("\n");
+	char *bin_str = dec_to_bin(str, len);
+	printf("Decimal: %d, Binary: %s", atoi(str), bin_str);
 
         free(str);
         free(base);
 	free(number);
+	free(bin_str);
         return 0;
 }

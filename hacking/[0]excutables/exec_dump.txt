@@ -1,0 +1,56 @@
+Each byte is represented in hex notation base 16
+1 byte = 8 bits
+bit =  True/False 1 or 0
+therefore each byte has 8 bits that each have 2 possibilities => 2^(8)
+256 possible values
+Rather, it would be better if each byte could be written as 2 hex
+digits instead of 8 binary digits
+That means if 1 byte can be written with to hex digits
+Then one hex digit represents 4 bits and the other represents 4 bits
+Thus making 8 bits = 1 byte
+Since 4 bits -> 2^(4) = 16 possibilities and hex goes from 0 - F (16)
+
+Left Hex Values:
+Represent Memory Addresses
+Memory, a collection of bytes of temp storage space
+This temporary storage space is numbered with addresses
+Memory -> row of bytes -> each with own address
+Each byte of memory can be accessed by its address
+CPU accesses memory at a specific address to retrieve machine
+language instructions
+32 bit processors have 2^(32) possible addresses
+
+Middle Hex Values:
+Machine language instructions
+Representation of the bytes of binary
+
+RHS Values:
+Assembly Language
+Mnemonics for corresponding machine language instructions
+
+Processors
+Possess special variables called registers
+Instructions use them to read from and write data to
+
+
+0000000000400526 <main>:
+  400526:	55                   	push   %rbp
+  400527:	48 89 e5             	mov    %rsp,%rbp
+  40052a:	bf c4 05 40 00       	mov    $0x4005c4,%edi
+  40052f:	e8 cc fe ff ff       	callq  400400 <puts@plt>
+  400534:	b8 00 00 00 00       	mov    $0x0,%eax
+  400539:	5d                   	pop    %rbp
+  40053a:	c3                   	retq   
+  40053b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000400540 <__libc_csu_init>:
+  400540:	41 57                	push   %r15
+  400542:	41 56                	push   %r14
+  400544:	41 89 ff             	mov    %edi,%r15d
+  400547:	41 55                	push   %r13
+  400549:	41 54                	push   %r12
+  40054b:	4c 8d 25 be 08 20 00 	lea    0x2008be(%rip),%r12        # 600e10 <__frame_dummy_init_array_entry>
+  400552:	55                   	push   %rbp
+  400553:	48 8d 2d be 08 20 00 	lea    0x2008be(%rip),%rbp        # 600e18 <__init_array_end>
+  40055a:	53                   	push   %rbx
+  40055b:	49 89 f6             	mov    %rsi,%r14
