@@ -22,3 +22,15 @@ int get_str_len(char *str) {
 int get_iarr_len(int *arr) {
 	return sizeof(arr)/sizeof(arr[0]);
 }
+
+void get_reverse(char **str) {
+	int len = get_str_len(*str);
+	int mid = len/2;
+	for (int i = 0; i < len; i++) {
+		if ( i < mid) {
+			char temp = (*str)[i];
+			(*str)[i] = (*str)[len - (1 + i)];
+			(*str)[len - (1 + i)] = temp;
+		}
+	}
+}
