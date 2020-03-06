@@ -10,6 +10,12 @@
 #define BIN 3
 #define FAIL 0
 
+#define DECA 10.0
+
+#define DIGITS 48
+#define ALPHAS_L 97
+#define ALPHAS_U 65
+
 
 char* dec_to_bin(char *dec, int len);
 char* dec_to_hex(char *dec, int len);

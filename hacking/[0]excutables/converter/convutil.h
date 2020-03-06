@@ -1,6 +1,7 @@
 void get_base(char *str);
 void get_number_as_string();
-void get_reverse(char **str);
+char* get_reverse(char *str);
+char* get_str_from_int(int integer);
 int get_str_len(char *str);
 void string_to_lower(char *str, int len);
 

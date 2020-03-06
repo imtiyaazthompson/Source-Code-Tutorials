@@ -4,6 +4,7 @@
 #include <string.h>
 #include "convutil.h"
 #include "convcore.h"
+#include <math.h>
 
 //decimal reaches faster ad misses out on last bit
 char* dec_to_bin(char *dec, int len) {
@@ -23,8 +24,7 @@ char* dec_to_bin(char *dec, int len) {
 	strcat(binary_string, bit);
 	//Currently ordered from LSB -> MSB
 	//Reversing the string gives MSB -> LSB
-	get_reverse(&binary_string);
-	return binary_string;
+	return get_reverse(binary_string);
 }
 
 char* dec_to_hex(char *dec, int len) {
@@ -61,13 +61,23 @@ char* dec_to_hex(char *dec, int len) {
 		strcat(hex_string, word);
 	} while (decimal != 0);
 	strcat(hex_string, "x0");
-	get_reverse(&hex_string);
-	return hex_string;
+	return get_reverse(hex_string);
 }
 
-char *bin_to_dec(char *bin, int len) {
-	char *dec_string = malloc(sizeof(char) * 50);
-	get_reverse(&bin);
+char* bin_to_dec(char *bin, int len) {
+	char *dec_string;
+	//Assume that the binary string given by the user is MSB -> LSB
+	char *lsb_ordered_bin = get_reverse(bin);
+	//Now instead of reverse indexing the MSB ordered binary string
+	//We can index as normal from i = 0 -> len - 1
+	int dec = 0;
+	for (int i = 0; i < len; i++) {
+		char c = lsb_ordered_bin[i];
+		int p = atoi(&c);
+		dec += (int) (p * pow(2.0, (double) i));
+	}
+	*dec_string = get_str_from_int(dec);
+	return dec_string;
 }
 
 void convert(char *str, int len, char **conv_str0, char **conv_str1, int base) {
@@ -79,6 +89,8 @@ void convert(char *str, int len, char **conv_str0, char **conv_str1, int base) {
 		case HEX:
 			break;
 		case BIN:
+			*conv_str0 = bin_to_dec(str, len);
+			strcat(*conv_str1, "lol");
 			break;
 		default:
 			break;
