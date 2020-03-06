@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "convutil.h"
+#include "convcore.h"
 
 void string_to_lower(char *str, int len) {
         for (int i = 0; i < len; i++) {

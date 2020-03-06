@@ -1,8 +1,3 @@
-#define DEC 1
-#define HEX 2
-#define BIN 3
-#define FAIL 0
-
 void get_base(char *str);
 void get_number_as_string();
 void get_reverse(char **str);

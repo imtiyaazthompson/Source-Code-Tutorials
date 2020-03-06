@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "convutil.h"
+#include "convcore.h"
 
 int main()
 {
         char *str = malloc(sizeof(char)*64);
         char *base = malloc(sizeof(char)*12);
-	int *number;
         int b, len;
         get_base(base);
         get_number_as_string(str);
@@ -28,12 +28,13 @@ int main()
                 return EXIT_FAILURE;
         }
 
-	char *bin_str = dec_to_bin(str, len);
-	printf("Decimal: %d, Binary: %s", atoi(str), bin_str);
+	char *conv_str0, *conv_str1;
+	convert(str, len, &conv_str0, &conv_str1, b);
+	printf("Dec: %s\nBin: %s\nHex: %s\n", str, conv_str0, conv_str1);
 
         free(str);
         free(base);
-	free(number);
-	free(bin_str);
+	free(conv_str0);
+	free(conv_str1);
         return 0;
 }
