@@ -40,24 +40,24 @@ char* get_reverse(char *str) {
 char* get_str_from_int(int integer) {
 	//Numbers start from 48 in ASCII
 	char *integer_str = malloc(sizeof(char) * 50);
-	int i = 1;
-	int m = 0;
-	char c[1];
-	double modulo = 0.0;
-	int isFirst = TRUE;
-	
-	//m will only equal the entire integer when (power of 10) > integer
-	while (modulo != integer) {
-		modulo = pow(DECA, i);
-		if (isFirst == FALSE) {
-			m = modulo - m;
-		} else {
-			m = (integer & (int) modulo);
-			isFirst = FALSE;
-		}
-		c[0] = DIGITS + m;
-		strcat(integer_str, c);
-		i++;
+	int i = 0;
+	int prev_mod = 0;
+	int prev_pow = 0;
+	int curr_pow = 0;
+	int mod = 0;
+	char digit[1];
+
+	while (prev_mod != integer) {
+		prev_pow = (int) (pow(DECA, i++));
+		curr_pow = (int) (pow(DECA, i));
+		mod = integer % curr_pow;
+		digit[0] = DIGITS + (mod - prev_mod)/prev_pow;
+		strcat(integer_str, digit);
+		prev_mod = mod;
 	}
 	return integer_str;
+}
+
+int get_hex_code(char c) {
+	return ((c % 16) + 8);
 }

@@ -65,7 +65,6 @@ char* dec_to_hex(char *dec, int len) {
 }
 
 char* bin_to_dec(char *bin, int len) {
-	char *dec_string;
 	//Assume that the binary string given by the user is MSB -> LSB
 	char *lsb_ordered_bin = get_reverse(bin);
 	//Now instead of reverse indexing the MSB ordered binary string
@@ -76,8 +75,31 @@ char* bin_to_dec(char *bin, int len) {
 		int p = atoi(&c);
 		dec += (int) (p * pow(2.0, (double) i));
 	}
-	*dec_string = get_str_from_int(dec);
-	return dec_string;
+	return get_reverse(get_str_from_int(dec));
+}
+
+char* bin_to_hex(char *bin, int len) {
+	char *dec_str = bin_to_dec(bin, len);
+	int dlen = get_str_len(dec_str);
+	return dec_to_hex(dec_str, dlen);
+}
+
+char* hex_to_dec(char *hex, int len) {
+	char *lsb_ordered_hex = get_reverse(hex);
+	int dec = 0;
+	for (int i = 0; i < len; i++) {
+		char c = lsb_ordered_hex[i];
+		int p = get_hex_code(c);
+		dec += (int) (p * pow(16.0, (double) i));
+	}
+
+	return get_reverse(get_str_from_int(dec));
+}
+
+char* hex_to_bin(char *hex, int len) {
+	char *dec_str = hex_to_dec(hex, len);
+	int dlen = get_str_len(dec_str);
+	return dec_to_bin(dec_str, dlen);
 }
 
 void convert(char *str, int len, char **conv_str0, char **conv_str1, int base) {
@@ -87,10 +109,12 @@ void convert(char *str, int len, char **conv_str0, char **conv_str1, int base) {
 			*conv_str1 = dec_to_hex(str, len);
 			break;
 		case HEX:
+			*conv_str0 = hex_to_dec(str, len);
+			*conv_str1 = hex_to_bin(str, len);
 			break;
 		case BIN:
 			*conv_str0 = bin_to_dec(str, len);
-			strcat(*conv_str1, "lol");
+			*conv_str1 = bin_to_hex(str, len);
 			break;
 		default:
 			break;
