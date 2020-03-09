@@ -1,0 +1,36 @@
+Get the info of a register -> info register rip
+
+Set a breakpoint at main -> break main
+Prog pauses exec when reaching the point main
+value of rip contains a memory address that points to an instr
+in main
+
+Everything before <+8> is known as function prologue, genera.
+by the compiler to reserve memory for the function
+
+Use the x command to directly examine memory
+x <memory address> <display option>
+
+<display option> -> <[count]o|x|u|t>
+o -> octal
+x -> hex
+u -> decimal
+t -> binary
+
+x/<[count]o|x|u|t[size]> <memory address|$<register>>
+
+Dump of assembler code for function main:
+   0x0000000000400526 <+0>:	push   rbp
+   0x0000000000400527 <+1>:	mov    rbp,rsp
+   0x000000000040052a <+4>:	sub    rsp,0x10
+   0x000000000040052e <+8>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x0000000000400535 <+15>:	jmp    0x400545 <main+31>
+   0x0000000000400537 <+17>:	mov    edi,0x4005e4
+   0x000000000040053c <+22>:	call   0x400400 <puts@plt>
+   0x0000000000400541 <+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x0000000000400545 <+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x0000000000400549 <+35>:	jle    0x400537 <main+17>
+   0x000000000040054b <+37>:	mov    eax,0x0
+   0x0000000000400550 <+42>:	leave  
+   0x0000000000400551 <+43>:	ret    
+End of assembler dump.

@@ -5,10 +5,10 @@ therefore each byte has 8 bits that each have 2 possibilities => 2^(8)
 256 possible values
 Rather, it would be better if each byte could be written as 2 hex
 digits instead of 8 binary digits
-That means if 1 byte can be written with to hex digits
-Then one hex digit represents 4 bits and the other represents 4 bits
-Thus making 8 bits = 1 byte
-Since 4 bits -> 2^(4) = 16 possibilities and hex goes from 0 - F (16)
+**That means if 1 byte can be written with two hex digits
+**Then one hex digit represents 4 bits and the other represents 4 bits
+**Thus making 8 bits = 1 byte
+**Since 4 bits -> 2^(4) = 16 possibilities and hex goes from 0 - F (16)
 
 Left Hex Values:
 Represent Memory Addresses

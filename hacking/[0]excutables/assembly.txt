@@ -7,11 +7,11 @@ operations: intuitive mnemonics
 
 Example
 8048375		89 e5		mov rbp,rsp
-8048377		83 ec 08	sub esp,0x8
+8048377		83 ec 08	sub rsp,0x8
 
 On the far right is the assembly instructions that gets exec
 at the mem address 8048375
-Move the value from rps to ebp
-Then subtract 8 from esp
+Move the value from rsp to rbp (stack pointer -> base pointer)
+Then subtract 8 from rsp
 
 

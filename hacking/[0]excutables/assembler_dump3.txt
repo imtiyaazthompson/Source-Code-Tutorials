@@ -1,0 +1,47 @@
+x/12x examines multiple (12) hex values at the target memory address
+
+The default size of a unit examined at the target memory address is 4 bytes -> WORD
+So, by default if WORD = 4 bytes then,
+	0x00fc45c7 -> 00 (1 byte, 4 bits 4 bits) |
+		      fc (1 byte)		 |\__4 bytes = WORD__ 
+		      45 (1 byte)		 |/
+		      c7 (1 byte)		 |
+
+So, when x/12x is used, from <main+8> to read in the first of 12 hex values from memory address <main+8>
+<main+8>  0x00fc45c7     
+<main+12> 0xeb000000     
+<main+16> 0x05e4bf0e   
+<main+20> 0xbfe80040
+
+Notice that we move up in increments of 4, this is because since each unit examined at each address is 4 bytes
+So the address of the next unit is at the previous memory address + 4 bytes: <main+4+4> = <main+8>
+
+Breakpoint 1 at 0x40052e: file simple2.c, line 6.
+Dump of assembler code for function main:
+   0x0000000000400526 <+0>:	push   rbp
+   0x0000000000400527 <+1>:	mov    rbp,rsp
+   0x000000000040052a <+4>:	sub    rsp,0x10
+   0x000000000040052e <+8>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x0000000000400535 <+15>:	jmp    0x400545 <main+31>
+   0x0000000000400537 <+17>:	mov    edi,0x4005e4
+   0x000000000040053c <+22>:	call   0x400400 <puts@plt>
+   0x0000000000400541 <+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x0000000000400545 <+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x0000000000400549 <+35>:	jle    0x400537 <main+17>
+   0x000000000040054b <+37>:	mov    eax,0x0
+   0x0000000000400550 <+42>:	leave  
+   0x0000000000400551 <+43>:	ret    
+End of assembler dump.
+Starting program: /home/it2901/Desktop/Source/Source-Code-Tutorials/hacking/[0]excutables/exe 
+
+Breakpoint 1, main () at simple2.c:6
+6		for (i = 0; i < 10; i++) {
+rip            0x40052e	0x40052e <main+8>
+rip            0x40052e	0x40052e <main+8>
+0x40052e <main+8>:	077042707
+0x40052e <main+8>:	0x00fc45c7
+0x40052e <main+8>:	16532935
+0x40052e <main+8>:	0x00fc45c7	0xeb000000
+0x40052e <main+8>:	0x00fc45c7	0xeb000000	0x05e4bf0e	0xbfe80040
+0x40053e <main+24>:	0x83fffffe	0x8301fc45	0x7e09fc7d	0x0000b8ec
+0x40054e <main+40>:	0xc3c90000	0x1f0f2e66	0x00000084	0x1f0f0000
