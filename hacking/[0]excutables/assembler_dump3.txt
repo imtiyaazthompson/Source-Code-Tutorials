@@ -14,7 +14,71 @@ So, when x/12x is used, from <main+8> to read in the first of 12 hex values from
 <main+20> 0xbfe80040
 
 Notice that we move up in increments of 4, this is because since each unit examined at each address is 4 bytes
-So the address of the next unit is at the previous memory address + 4 bytes: <main+4+4> = <main+8>
+So the address of the next unit is at the previous memory address + 4 bytes: <(main+4)+4> = <main+8>
+
+So, if $rip is the memory address located at <main+8> that stores the machine instructions (@ that address) in 
+hexadecimal e.g. <main+8> 0x00fc45c7, which is a 4 byte instruction, thus a unit of WORD size, then the next 
+hexadecimal instruction, of 4 bytes will be located at the next address over, which is 4 bytes over, That is
+
+<main+8>  is the address of the instruction 00 - 1 byte| 
+<main+9>  is the address of the instruction fc - 1 byte|\__4 bytes = WORD__
+<main+10> is the address of the instruction 45 - 1 byte|/
+<main+11> is the address of the instruction c7 - 1 byte|
+<main+12> is the address of the instruction eb - 1 byte
+
+
+We can also examine units of memory at different sizes, where the default is a WORD = 4 bytes
+x/[n]<format>[size] <address>
+[size]:
+	b - byte
+	h - half word = 2 bytes
+	w - word = 4 bytes (default)
+	g - giant word = 8 bytes
+
+So if we examine memory in size b, we examine memory addressess in increments of 1, so we see only 1 byte of the machine
+instructions located at a given memory address
+
+Example
+(gdb) x/4xb $rip
+0x40052e <main+8>:	0xc7	0x45	0xfc	0x00
+
+Notice, when we examine individual bytes the order of the hex bytes (1 byte chunks) are swapped as compared to the hex WORD
+(4 byte chunks). Why is that?
+
+x86 processor values are stored in little-endian byte order, that is, the Least Significant Byte is stored first.
+So,
+
+0x00fc45c7 is a x86 processor value stored in its proper byte order (human readable byte order) swapped round for us by gdb,
+with the most significant byte stored first
+that means in little endian,
+
+LSB --- c7 45 fc 00 --- MSB, this is how the BYTES are stored on an x86 processor, with the LSB -> MSB
+
+But the hex value should be read from right to left, almost like a decimal number for 110, the 100 is the MSDigit
+So in actuallity, to read the instruction from MSB -> LSB, gdb reverses the byte order when veiwing in WORD units,
+or smaller units as compared to the default byte size
+
+MSB --- 00fc45c7 --- LSB
+
+Lets solidify this thinking by converting hex to decimal
+[1](gdb) x/xw $rip
+	0x40052e <main+8>:	0x00fc45c7
+
+[2](gdb) x/uw $rip
+	0x40052e <main+8>:	16532935
+ 
+[2] Examine the same address, but convert the hex value to decimal, but
+MSB --- 00 fc 45 c7 --- LSB, if when we convert to decimal using this byte order we get -> (16^(0) * 7) + (16^(1) * 12) + 
+(16^(2) * 5) + ... = base10(16532935) which is correct, thus making 0x00fc45c7 big-endian byte ordering, Most Significant
+Byte showed first (MSB->LSB)
+
+When GDB must display a word or half word it knows it must reverse the little-endian byte ordering to big-endian byte ordering
+(LSB -> MSB) => (MSB -> LSB)
+
+Also
+
+x/<i> <memory address>
+Examines the memory as disassembled assembly instructions (@ that address)
 
 Breakpoint 1 at 0x40052e: file simple2.c, line 6.
 Dump of assembler code for function main:
