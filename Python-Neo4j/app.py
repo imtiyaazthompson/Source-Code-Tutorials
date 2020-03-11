@@ -1,12 +1,15 @@
-from py2neo import Graph, Node, Relationship, PropertyDict
+from py2neo import Graph, Node, Relationship
 
 def welcome():
 	print('Welcome to the Hello World of py2neo - Neo4j for Python!\n')
 
 def init_graph():
-	return Graph()
+	return Graph('bolt://ws-10-0-1-235-32979.neo4jsandbox.com:443')
 
 
+def push(items, g):
+	for item in items:
+		g.create(item)
 '''
 	Delete all nodes and relationships
 '''
@@ -32,6 +35,7 @@ def main():
 	bob = create_node('Person', {'name':'john','age':22})
 	alice = create_node('Person', {'name':'alice', 'age':21})
 	rel = define_rel(bob, "MARRIED TO", alice, {'years':10, 'happy':True})
-	print(rel)
+	g.create(rel)
+	print(g)
 
 main()
