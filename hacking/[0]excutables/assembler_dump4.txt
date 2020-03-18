@@ -1,0 +1,121 @@
+=> 0x40052e <main+8>:	mov    DWORD PTR [rbp-0x4],0x0
+A syntax error in expression, near `$rip'.
+=> 0x40052e <main+8>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+0x40052e <main+8>:	0xc7	0x45	0xfc	0x00	0x00	0x00	0x00
+0x40052e <main+8>:	0xc7	0x45	0xfc	0x00	0x00	0x00	0x00
+rip            0x40052e	0x40052e <main+8>
+rip            0x40052e	0x40052e <main+8>
+Invalid register `+'
+rip            0x40052e	0x40052e <main+8>
+Invalid register `+'
+Invalid register `($rip'
+rip            0x40052e	0x40052e <main+8>
+Invalid register `-'
+0x400532 <main+12>:	0x00
+0x400532 <main+12>:	0xeb000000
+1	#include <stdio.h>
+2	
+3	int main()
+4	{
+5		int i;
+6		for (i = 0; i < 10; i++) {
+7			printf("Hello, World!\n");
+8		}
+9	
+10		return 0;
+   0x400536 <main+16>:	(bad)  
+   0x400537 <main+17>:	mov    edi,0x4005e4
+   0x40053c <main+22>:	call   0x400400 <puts@plt>
+   0x400541 <main+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x400545 <main+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x400549 <main+35>:	jle    0x400537 <main+17>
+=> 0x40052e <main+8>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+=> 0x40052e <main+8>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+0x7fffffffde1c:	0x00000000
+rip            0x40052e	0x40052e <main+8>
+=> 0x40052e <main+8>:	mov    DWORD PTR [rbp-0x4],0x0
+0x0000000000400535	6		for (i = 0; i < 10; i++) {
+=> 0x400535 <main+15>:	jmp    0x400545 <main+31>
+0x7fffffffde1c:	0x00000000
+No symbol "rbp" in current context.
+rbp            0x7fffffffde20	0x7fffffffde20
+rbp            0x7fffffffde20	0x7fffffffde20
+Invalid register `-'
+rbp            0x7fffffffde20	0x7fffffffde20
+Invalid register `-'
+0x7fffffffde1b:	0x00000000
+1	#include <stdio.h>
+2	
+3	int main()
+4	{
+5		int i;
+6		for (i = 0; i < 10; i++) {
+7			printf("Hello, World!\n");
+8		}
+9	
+10		return 0;
+=> 0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+   0x40053c <main+22>:	call   0x400400 <puts@plt>
+=> 0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+   0x40053c <main+22>:	call   0x400400 <puts@plt>
+   0x400541 <main+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x400545 <main+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x400549 <main+35>:	jle    0x400537 <main+17>
+=> 0x400535 <main+15>:	jmp    0x400545 <main+31>
+   0x400537 <main+17>:	mov    edi,0x4005e4
+   0x40053c <main+22>:	call   0x400400 <puts@plt>
+   0x400541 <main+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x400545 <main+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x400549 <main+35>:	jle    0x400537 <main+17>
+   0x40054b <main+37>:	mov    eax,0x0
+   0x400550 <main+42>:	leave  
+   0x400551 <main+43>:	ret    
+   0x400552:	nop    WORD PTR cs:[rax+rax*1+0x0]
+   0x40055c:	nop    DWORD PTR [rax+0x0]
+   0x400560 <__libc_csu_init>:	push   r15
+0x0000000000400545	6		for (i = 0; i < 10; i++) {
+0x0000000000400549	6		for (i = 0; i < 10; i++) {
+7			printf("Hello, World!\n");
+rip            0x400537	0x400537 <main+17>
+   0x400562 <__libc_csu_init+2>:	push   r14
+   0x400564 <__libc_csu_init+4>:	mov    r15d,edi
+No symbol "r14" in current context.
+$1 = 0
+$2 = 1
+0x000000000040053c	7			printf("Hello, World!\n");
+6		for (i = 0; i < 10; i++) {
+rip            0x400541	0x400541 <main+27>
+rip            0x400541	0x400541 <main+27>
+0x0000000000400545	6		for (i = 0; i < 10; i++) {
+0x0000000000400549	6		for (i = 0; i < 10; i++) {
+7			printf("Hello, World!\n");
+rip            0x400537	0x400537 <main+17>
+=> 0x400537 <main+17>:	mov    edi,0x4005e4
+0x400537 <main+17>:	0xbf	0xe4	0x05	0x40
+0x40053b <main+21>:	0x00	0xe8	0xbf	0xfe
+0x40053f <main+25>:	255
+0x400537 <main+17>:	191
+0x400537 <main+17>:	191	228	5	64
+0x400537 <main+17>:	191	228	5	64	0	232
+0x400537 <main+17>:	-65 '\277'	-28 '\344'	5 '\005'	64 '@'	0 '\000'	-24 '\350'
+=> 0x400537 <main+17>:	mov    edi,0x4005e4
+   0x40053c <main+22>:	call   0x400400 <puts@plt>
+   0x400541 <main+27>:	add    DWORD PTR [rbp-0x4],0x1
+   0x400545 <main+31>:	cmp    DWORD PTR [rbp-0x4],0x9
+0x4005e4:	72	101	108	108
+0x4005e8:	111	44	32	87	111	114
+0x4005e4:	72	101	108	108	111	44
+0x4005ea:	32 ' '	87 'W'	111 'o'	114 'r'	108 'l'	100 'd'
+0x4005f0:	33 '!'	0 '\000'	0 '\000'	0 '\000'	1 '\001'	27 '\033'	3 '\003'	59 ';'
+0x4005f8:	48 '0'	0 '\000'	0 '\000'	0 '\000'
+0x4005e4:	72 'H'	101 'e'	108 'l'	108 'l'	111 'o'	44 ','	32 ' '	87 'W'
+0x4005ec:	111 'o'	114 'r'	108 'l'	100 'd'
+0x4005e4:	"Hello, World!"
