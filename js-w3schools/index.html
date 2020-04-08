@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My JavaScript</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  </head>
+  <body>
+	<p id="button_1">Change</p>
+	<p id="button_2"></p>	
+	<button type="button" onclick="document.getElementById('button_1').innerHTML = 'JS Inject'">click</button>
+
+
+	<script>
+
+		var price1 = 10;
+		var price2 = 20;
+		var total = price1 + price2;
+		var subMsg = "The total is: "
+		document.getElementById('button_2').innerHTML = subMsg + total;
+
+		console.log("5 == '5' is " + (5 == "5"));
+		console.log("5 === '5' is " + (5 === "5"));
+ 
+	</script>
+  </body>
+</html>
+
+

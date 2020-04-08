@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        </title>Continuation</title>
+    </head>
+
+    <body>
+        
+        <button onclick="this.innerHTML = Date();">Get current Date no function</button>
+        <button onclick="getDate()">Get Date Function</button>
+        <h3 id='date'></h3>
+        <p id='conv'></p>
+        <h1>Fancy Object</h1>
+        <p id='fname'></p>
+        <p id='lname'></p>
+        <p id='age'></p>
+        <p id='full'></p>
+        <br>
+        <div style="border: solid blue 2px;" onmouseover="changeMe(change)" onmouseout="changeMe(def)">
+            <p id='change'>Will Change on mouseover</p>
+        </div>
+        <script>
+            var cars = ["Nissan","Toyota","Subaru"];
+            console.log(cars);
+            console.log(cars[1]);
+            
+            var person = {name:"John",age:22,occupation:"Coder"};
+            console.log(person);
+            
+            var sum = add(2,3);
+            console.log("The sum of 2 and 3 is " + sum);
+            function add(x,y) {
+                return (x + y);
+            }
+            
+            function toCelc(fahr) {
+                return (5.0/9.0) * (fahr - 32);
+            }
+            var text = "77 F to C is: " + toCelc(77) + "C";
+            document.getElementById('conv').innerHTML = text
+            
+            var fancyObj = {
+                fname:"John",
+                lname:"Smith",
+                age:22,
+                cred:function(){
+                    return (this.fname + " " + this.lname + " is " + this.age + " years old.");
+                }
+            };
+            document.getElementById('fname').innerHTML = "First name: " + fancyObj["fname"];
+            document.getElementById('lname').innerHTML = "Last name: " + fancyObj["lname"];
+            document.getElementById('age').innerHTML = "Age: " + fancyObj["age"];
+            document.getElementById('full').innerHTML = "Full credentials: " + fancyObj.cred();
+            
+            function getDate() {
+                document.getElementById('date').innerHTML = "The current date is: " + Date();
+            }
+            
+            var def = "Will Change on Mouseover";
+            function changeMe(code) {
+                if (code != def) {
+                    document.getElementById('change').innerHTML = "Changed!";
+                } else {
+                    document.getElementById('change').innerHTML = def;
+                }
+            }
+        </script>
+    </body>
+</html>
