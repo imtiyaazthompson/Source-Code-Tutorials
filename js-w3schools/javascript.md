@@ -86,3 +86,56 @@ Examples
 	var person = {name:"John",age:22};
 
 ```
++ Javascript objects can contain functions that define the behaviour of the object variables
+```javascript
+	var person = {
+		name:"John",
+		age:22,
+		full:function() {
+			return this.name + " is " + this.age + " years old.";	
+		}
+	};
+
+	person.full() //Calls the function associated with the key: full
+```
+
+## Functions
+```javascript
+	function myFunc(args) {
+		<code here>
+		return something;
+	}
+```
+
+## Events
++ Since javascript code is usually long and used in functions
++ Functions are mostly used in tandem with events to allow us to dynamically change the contents of the html
+
+```javascript
+
+	<p id='id_' onmouseover="change('id_')">I will change</p>
+
+
+	<script>
+		function change(id) {
+			document.getElementById(id).innerHTML = "Changed"
+		}
+	</script
+```
+
++ There are many more events that can be **reacted to** by javascript
+|Event		|Description						|
+|---------------|-------------------------------------------------------|
+|onchange	| An HTML element has been changed			|
+|onclick	| The user clicks an HTML element			|
+|onmouseover	| The user moves the mouse over an HTML element		|
+|onmouseout	| The user moves the mouse away from an HTML element	|
+|onkeydown	| The user pushes a keyboard key			|
+|onload		| The browser has finished loading the page		|
+
+
+## String revisited
++ `var str = "Some String";`
++ Get string length -> `str.length;`
++ Lots of other methods that can becalled by `str.methodName();`
+
