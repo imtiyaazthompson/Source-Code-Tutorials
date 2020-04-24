@@ -1,7 +1,9 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <string.h>
 #include "display.h"
+#include "bool.h"
 
 void hollow_display(Display **d) {
 	(*d)->window = NULL;
@@ -11,11 +13,29 @@ void hollow_display(Display **d) {
 	(*d)->caption = malloc(sizeof(char)*30);
 }
 
+int init_media_access() {
+	int success = TRUE;
+	//Allow loading of PNG,JPG and TFF
+	int flags = IMG_INIT_PNG|IMG_INIT_JPG|IMG_INIT_TIF;
+
+	//Bitwise Magic
+	//ANDing the bits of an integer -> convert to binary
+	//If 2 of the same bits are ANDed they return 0 -> False
+	if (!(IMG_Init(flags) &  flags)) {
+		success = FALSE;
+		raise_error("Loading Media: Images",MEDIA);
+	}
+
+	return success;
+}
+
 int init_display(char *caption,int width,int height,Display **d,int fill) {
 	int status = SDL_Init(SDL_INIT_VIDEO);
+	int success = TRUE;
 
 	if (status < 0) {
-		raise_error("Initializing Display");
+		success = FALSE;
+		raise_error("Initializing Display",DISPLAY);
 	} else {
 		//Create window
 		(*d)->width = width;
@@ -31,7 +51,8 @@ int init_display(char *caption,int width,int height,Display **d,int fill) {
 			);
 
 		if ((*d)->window == NULL) {
-			raise_error("Creating Window");
+			success = FALSE;
+			raise_error("Creating Window",DISPLAY);
 		} else {
 			get_window_surface(d);
 			if (fill) {
@@ -40,6 +61,8 @@ int init_display(char *caption,int width,int height,Display **d,int fill) {
 			}
 		}
 	}
+	
+	return success;
 }
 
 void get_window_surface(Display **d) {
@@ -68,6 +91,7 @@ void delay_display(int ms) {
 }
 
 void close_display(Display **d) {
+	free((*d)->caption);
 	SDL_DestroyWindow((*d)->window);
 	SDL_Quit();
 }
@@ -84,7 +108,12 @@ char* get_caption(Display **d) {
 	return (*d)->caption;
 }
 
-void raise_error(char *type) {
-	printf("Error: %s\n",type);
-	printf("SDL_Error: %s\n",SDL_GetError());
+void raise_error(char *type, int mode) {
+	if (mode == DISPLAY) {
+		printf("Error: %s\n",type);
+		printf("SDL_Error: %s\n",SDL_GetError());
+	} else if (mode == MEDIA) {
+		printf("Error: %s\n",type);
+		printf("IMG_Error: %s\n",IMG_GetError());
+	}
 }

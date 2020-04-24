@@ -111,3 +111,45 @@
 	+ When SDL is delaying, it is blocking and accepts no input
 
 + **NB** Remember to use `strcpy` when writing strings to `malloc'd` `char*`
+
+## Images
+```c
+	SDL_Surface *surface = NULL;
+```
++ An `SDL_Surface` is just an image datatype that contains the pixels of an image and all the data used to render it
++ SDL surfaces are software rendered as in it is rendered by the CPU (low performance)
++ Require another Library called `SDL_Image`
+```
+	$ sudo apt-get install libsdl2-image-dev
+```
++ Include `-lSDL2_image` in your make `LFLAGS`
++ Include headers: `<SDL2/SDL_image.h>`
++ Similar for `$sudo apt-get install libsdl2-mixer-dev`
++ And `libsdl2-ttf-dev`
+
+## Event Handling
+```
+	SDL_Event e;
+	int quit = FALSE;
+	while (!quit) {
+		while (SDL_PollEvent(&e) != 0) {
+			if (e.type == SDL_QUIT) {
+				quit = TRUE;
+			}
+		}
+	}
+```
++ Game Loop
+	+ Event Loop
+		+ Keep processing the **event queue** until it is empty
+		> When you press a key, move the mouse, or touch a touch screen you put events onto the event queue.
+
+		+ Event queue stores events in the order they occured waiting for you to process them
+		+ You poll the event queue to get the most recent event that occured
+		+ Take the most recent event and save it in `e`
+
+>I wouldn't think of function pointers as switch alternatives. Switch tests an expression and then executes code based on the value of the expression. Function pointers don't test anything. They just allow you to store and pass references to functions when you don't know what function you're going to call at compile time. The example I used was simply to demonstrate how they work. I was not recommending that you write functions to add and multiply integers. Common uses for function pointers are callback functions, thread functions, and occasionally incarnations of finite state machines. Also, when you are trying to replace switch statements, you can often use function pointers to create simpler code that's easier to extend.
+
+## Callbacks
++ Function pointers passed as arguments to functions
++ Used when the function to be used is not known at compile time 
