@@ -1,0 +1,13 @@
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.exe
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.deps.json
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.runtimeconfig.json
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.runtimeconfig.dev.json
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.dll
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\bin\Debug\netcoreapp3.1\SCTut.pdb
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.csprojAssemblyReference.cache
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.AssemblyInfoInputs.cache
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.AssemblyInfo.cs
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.csproj.CoreCompileInputs.cache
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.dll
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.pdb
+C:\Users\Imtiyaaz Thompson\Desktop\SCTut\Source-Code-Tutorials\CSharp\SCTut\SCTut\obj\Debug\netcoreapp3.1\SCTut.genruntimeconfig.cache
